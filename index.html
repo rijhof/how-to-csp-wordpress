@@ -2,135 +2,137 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8" />
-    <title>Content Security Policy (CSP) - Einführung</title>
-    <style>
-        /* Grundlegendes, leichtes Styling */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #364f6b;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        h1, h2 {
-            color: #364f6b;
-        }
-
-        h1 {
-            margin-top: 0;
-            padding-top: 1rem;
-            text-align: center;
-        }
-
-        section {
-            margin: 1rem 0;
-            padding: 1rem;
-        }
-
-        ul {
-            list-style-type: disc;
-            margin-left: 2rem;
-        }
-
-        code {
-            background-color: #eee;
-            padding: 0.2rem 0.4rem;
-            font-family: "Courier New", monospace;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            color: #666;
-        }
-    </style>
+    <title>Content Security Policy (CSP) - Übersicht</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+<!-- Optionaler Sticky Header (falls gewünscht) -->
 <header>
-    <h1>Content Security Policy (CSP) - Einführung</h1>
+    <h1>Content Security Policy (CSP) - Übersicht</h1>
 </header>
 
-<main>
-    <!-- Was ist ein CSP Header und welchen Nutzen hat es? -->
+<main class="content-box">
+    <!-- Alle Bereiche werden direkt angezeigt, ohne Buttons oder Animationen -->
+
     <section>
-        <h2>Was ist ein CSP Header und welchen Nutzen hat er?</h2>
+        <h2>Was ist ein CSP-Header und welchen Nutzen hat er?</h2>
+        <p>
+            Ein CSP-Header ist eine Sicherheitsmaßnahme, die festlegt, von welchen Quellen Ressourcen wie Skripte, Stylesheets und Bilder geladen werden dürfen, um Angriffe wie XSS und Code-Injection zu verhindern.
+        </p>
         <ul>
-            <li><strong>Definition:</strong> Content Security Policy (CSP) ist ein HTTP-Header, der festlegt, von welchen Quellen Inhalte (z.B. Skripte, Styles, Bilder) in einer Webanwendung geladen werden dürfen.</li>
-            <li><strong>Ziel:</strong> Minimierung von Sicherheitsrisiken wie Cross-Site-Scripting (XSS), Clickjacking oder Code-Injection.</li>
-            <li><strong>Funktionsweise:</strong> Der Browser erhält durch den CSP-Header Vorschriften, von welchen Quellen er Ressourcen laden darf. Nicht autorisierte Quellen werden blockiert.</li>
-            <li><strong>Vorteile:</strong>
+            <li>
+                <strong>Definition:</strong> Ein CSP-Header definiert Richtlinien (z. B. <code>default-src</code>, <code>script-src</code>), die festlegen, von welchen Quellen Inhalte geladen werden dürfen.
+            </li>
+            <li>
+                <strong>Ziel:</strong> Ziel ist es, Sicherheitsrisiken zu minimieren, indem nur vertrauenswürdige Quellen für den Inhalt zugelassen werden.
+            </li>
+            <li>
+                <strong>Funktionsweise:</strong> Der Browser überprüft beim Laden der Webseite jede Ressource gegen die definierten Richtlinien und blockiert alle Inhalte, die nicht den Vorgaben entsprechen.
+            </li>
+            <li>
+                <strong>Vorteile:</strong>
                 <ul>
-                    <li>Verhindert das Ausführen unerwünschter Skripte</li>
-                    <li>Beugt Datenlecks und Session-Hijacking vor</li>
-                    <li>Hilft Entwicklern, Sicherheitslücken schneller zu erkennen und zu schließen</li>
+                    <li>Verhindert die Ausführung unerwünschter Skripte</li>
+                    <li>Beugt Datenlecks oder Session-Hijacking vor</li>
+                    <li>Ermöglicht schnelle Diagnose und Behebung von Sicherheitslücken</li>
                 </ul>
             </li>
         </ul>
     </section>
 
-    <!-- Wie funktionieren XSS Attacks? -->
     <section>
-        <h2>Wie funktionieren XSS-Angriffe?</h2>
+        <h2>Wie funktionieren XSS-Attacken?</h2>
         <ul>
-            <li><strong>Grundprinzip:</strong> Angreifer schleusen Schadcode (meist JavaScript) in eine Webseite ein, sodass dieser im Browser eines Nutzers ausgeführt wird.</li>
-            <li><strong>Ausgangspunkt:</strong> Lücken in Benutzereingaben wie Formularfelder, Kommentarbereiche oder Suchfelder – oft fehlendes oder unzureichendes Validieren und Escapen von Eingaben.</li>
+            <li><strong>Grundprinzip:</strong> Angreifer schleusen bösartigen JavaScript-Code in eine Webseite ein, sodass er im Browser des Nutzers ausgeführt wird.</li>
+            <li><strong>Einfallstor:</strong> Unzureichend validierte oder bereinigte Benutzereingaben (Formulare, Kommentare, etc.).</li>
             <li><strong>Auswirkungen:</strong>
                 <ul>
-                    <li>Diebstahl von Cookies oder Sitzungstokens (Session Hijacking)</li>
-                    <li>Manipulation von Seiteninhalten</li>
-                    <li>Weiterleitung auf bösartige Seiten</li>
+                    <li>Diebstahl von Cookies oder Session-Tokens</li>
+                    <li>Manipulation angezeigter Inhalte</li>
+                    <li>Weiterleitung auf schädliche Seiten</li>
                 </ul>
             </li>
         </ul>
+
+        <section>
+            <h2>Wie funktionieren XSS-Attacken?</h2>
+            <ul>
+                <li>
+                    <strong>Grundprinzip:</strong> Angreifer schleusen bösartigen JavaScript-Code in eine Webseite ein, sodass er im Browser des Nutzers ausgeführt wird.
+                </li>
+                <li>
+                    <strong>Einfallstor:</strong> Unzureichend validierte oder bereinigte Benutzereingaben (z. B. in Formularen oder Kommentarfeldern).
+                </li>
+                <li>
+                    <strong>Auswirkungen:</strong>
+                    <ul>
+                        <li>Diebstahl von Cookies oder Session-Tokens</li>
+                        <li>Manipulation angezeigter Inhalte</li>
+                        <li>Weiterleitung auf schädliche Seiten</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>Beispiel: Kommentarfeld mit direktem Output</h3>
+            <p>
+                In diesem Beispiel wird der eingegebene Kommentar direkt als HTML ausgegeben. Wird hier bösartiger Code eingegeben, kann er im Browser ausgeführt werden.
+            </p>
+            <div style="display: flex; border: 1px solid #ccc; padding: 10px;">
+                <div style="flex: 1; padding-right: 10px;">
+                    <h4>Kommentarfeld</h4>
+                    <textarea id="commentInput" rows="5" cols="30" placeholder="Kommentar eingeben"></textarea>
+                    <br>
+                    <button onclick="postComment()">Kommentar posten</button>
+                </div>
+                <div style="flex: 1; padding-left: 10px; border-left: 1px solid #ccc;">
+                    <h4>Output</h4>
+                    <div id="commentOutput" style="min-height: 80px; background: #f9f9f9; padding: 5px;"></div>
+                </div>
+            </div>
+            <script>
+                function postComment() {
+                    var comment = document.getElementById('commentInput').value;
+                    // UNSICHER: Direkte Ausgabe von Benutzereingaben ohne Filterung!
+                    document.getElementById('commentOutput').innerHTML = comment;
+                }
+            </script>
+        </section>
+
+
     </section>
 
-    <!-- Einfache Beispiele von XSS-Attacken -->
     <section>
-        <h2>Einfache Beispiele von XSS-Angriffen</h2>
+        <h2>Einfache Beispiele von XSS-Angriffen – Einfach erklärt</h2>
         <ol>
-            <li><strong>Reflected XSS:</strong>
-                <ul>
-                    <li>Der bösartige Code wird per URL oder Formular eingeschleust und direkt im Browser ausgeführt.</li>
-                    <li>Beispiel: <code>http://example.com?query=&lt;script&gt;alert('XSS')&lt;/script&gt;</code></li>
-                </ul>
+            <li>
+                <strong>Reflected XSS:</strong>
+                <p>
+                    Hier wird schädlicher Code direkt über eine URL oder ein Formular in die Webseite eingebracht. Stell dir vor, du klickst auf einen Link, der versteckten Code enthält – dieser Code wird sofort ausgeführt, sobald du die Seite aufrufst.
+                </p>
             </li>
-            <li><strong>Stored XSS:</strong>
-                <ul>
-                    <li>Der Schadcode wird auf dem Server (z.B. in der Datenbank) gespeichert und bei jedem Seitenaufruf an Nutzer ausgeliefert.</li>
-                    <li>Beispiel: Ein Kommentarbereich, in den <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> eingefügt wird.</li>
-                </ul>
+            <li>
+                <strong>Stored XSS:</strong>
+                <p>
+                    Bei diesem Angriff wird der bösartige Code dauerhaft auf dem Server gespeichert, etwa in einem Kommentarbereich. Jeder Besucher, der die Seite anschaut, lädt den schädlichen Code mit – wie ein gefälschter Kommentar, der jedem Benutzer automatisch Schaden zufügt.
+                </p>
             </li>
-            <li><strong>DOM-based XSS:</strong>
-                <ul>
-                    <li>Die Ausführung erfolgt vollständig clientseitig durch manipulierte JavaScript-Operationen auf dem DOM.</li>
-                    <li>Beispiel: Ein Skript verwendet <code>window.location.hash</code>, um Inhalte ins DOM zu schreiben, ohne zu validieren.</li>
-                </ul>
+            <li>
+                <strong>DOM-based XSS:</strong>
+                <p>
+                    Hier passiert alles im Browser. Ein unsicheres Skript liest Teile der URL (zum Beispiel den Teil nach dem „#“) und fügt sie ohne ausreichende Kontrolle direkt in die Seite ein. Das kann dazu führen, dass der schädliche Code im Browser ausgeführt wird.
+                </p>
+                <p>
+                    <strong>Fatales Beispiel:</strong> Angenommen, eine Webseite zeigt dynamisch Inhalte basierend auf dem URL-Fragment an. Ein Angreifer könnte den Fragmentteil manipulieren und einen bösartigen Code einschleusen, der beispielsweise alle Eingaben des Benutzers abfängt und an einen externen Server sendet oder die gesamte Anzeige der Seite durch manipulierte Inhalte ersetzt. Dadurch wird nicht nur sensible Information gestohlen, sondern auch die Benutzerinteraktion komplett unter die Kontrolle des Angreifers gebracht.
+                </p>
+                <p>
+                    <strong>Beispiel URL:</strong> <code>http://example.com/#&lt;script&gt;alert('XSS')&lt;/script&gt;</code>
+                </p>
             </li>
         </ol>
     </section>
 
-    <!-- Wie sieht ein maximal sicherer CSP Header aus? -->
     <section>
-        <h2>Wie sieht ein maximal sicherer CSP Header aus?</h2>
-        <p>Eine 100%ige “maximal sichere” Richtlinie gibt es kaum, doch das folgende Beispiel ist sehr restriktiv:</p>
+        <h2>Wie sieht ein maximal sicherer CSP-Header aus?</h2>
         <pre><code>Content-Security-Policy:
   default-src 'none';
   script-src 'self';
@@ -146,57 +148,99 @@
 </code></pre>
         <ul>
             <li><strong>default-src 'none':</strong> Blockiert alle Ressourcen, die nicht explizit erlaubt sind.</li>
-            <li><strong>script-src 'self':</strong> Nur Skripte von derselben Domain zulassen.</li>
-            <li><strong>style-src 'self':</strong> Nur Stylesheets von derselben Domain zulassen.</li>
-            <li><strong>img-src 'self':</strong> Nur Bilder vom eigenen Server laden.</li>
-            <li><strong>object-src 'none':</strong> Verhindert Flash/Java/Objekt-Einbindungen.</li>
+            <li><strong>script-src 'self':</strong> Nur Skripte von der eigenen Domain.</li>
+            <li><strong>style-src 'self':</strong> Nur CSS von der eigenen Domain.</li>
+            <li><strong>img-src 'self':</strong> Nur Bilder vom eigenen Server.</li>
+            <li><strong>object-src 'none':</strong> Verhindert Flash-/Java-/ActiveX-Einbindungen.</li>
             <li><strong>frame-ancestors 'none':</strong> Schutz vor Clickjacking.</li>
-            <li><strong>report-uri:</strong> Sammeln von CSP-Verletzungsberichten zu Analysezwecken.</li>
-            <li><strong>Optionale Verbesserungen:</strong> Nonces/Hashes für Inline-Skripte, <code>upgrade-insecure-requests</code>, <code>strict-dynamic</code>, etc.</li>
+            <li><strong>report-uri:</strong> Sammelt Meldungen zu CSP-Verstößen.</li>
+            <li><strong>Optionale Ergänzungen:</strong> Nonces/Hashes für Inline-Skripte, <code>upgrade-insecure-requests</code>, usw.</li>
         </ul>
     </section>
 
-    <!-- Wie mache ich nun meine Seite CSP konform? -->
     <section>
         <h2>Wie mache ich meine Seite CSP-konform?</h2>
         <ol>
             <li><strong>Bestandsaufnahme:</strong> Liste alle Ressourcen (Skripte, Styles, Bilder, Fonts) und deren Quellen auf.</li>
-            <li><strong>Policy entwerfen:</strong> Definiere, von welchen Quellen du welche Inhalte laden willst. Eventuell Nonces oder Hashes bei Inline-Skripten.</li>
-            <li><strong>Implementierung:</strong> Füge den CSP-Header in deiner Server-/Framework-Konfiguration hinzu (Apache, Nginx, Express.js usw.).</li>
-            <li><strong>Testphase mit Report-Only:</strong> Überwache Verletzungen, ohne sie sofort zu blockieren.</li>
-            <li><strong>Produktiver Einsatz:</strong> Deaktiviere <code>Report-Only</code>, sobald keine Verletzungen mehr auftreten.</li>
-            <li><strong>Kontinuierliche Pflege:</strong> Bei Änderungen (neue Skripte, externe Dienste) musst du auch deine CSP aktualisieren.</li>
+            <li><strong>Policy entwerfen:</strong> Lege fest, welche Quellen erlaubt sind. Eventuell Nonces/Hashes für Inline-Code.</li>
+            <li><strong>Implementierung:</strong> Setze den CSP-Header im Server oder im Framework (z. B. Apache, Nginx, Express.js).</li>
+            <li><strong>Test mit Report-Only:</strong> Zeichne Verstöße auf, ohne sie sofort zu blockieren.</li>
+            <li><strong>Produktivschaltung:</strong> Deaktiviere <code>Report-Only</code>, wenn alles passt.</li>
+            <li><strong>Pflege:</strong> Aktualisiere die CSP bei neuen Ressourcen oder externen Diensten.</li>
         </ol>
     </section>
 
-    <!-- PHP-Implementierung (Erweiterung) -->
     <section>
-        <h2>Implementierung mit PHP CSP-Header</h2>
-        <p>In PHP lässt sich der CSP-Header direkt per <code>header()</code>-Funktion festlegen. Beispiel:</p>
+        <h2>Implementierung mit PHP-CSP-Header (Integriertes Beispiel)</h2>
+        <p>
+            In diesem Beispiel wird ein dynamischer CSP-Header implementiert, der mithilfe eines Nonce Inline-Skripte absichert. Dazu werden zwei Dateien verwendet:
+        </p>
+        <h3>Generate_nonce.php</h3>
         <pre><code>&lt;?php
-header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; 
-        font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; 
-        report-uri /csp-report-endpoint");
+function generate_nonce()
+{
+    static $nonce = null;
+    if ($nonce === null) {
+        $nonce = base64_encode(random_bytes(16));
+    }
+    return $nonce;
+}
+
+?&gt;
+</code></pre>
+
+        <h3>Csp_header.php</h3>
+        <pre><code>&lt;?php
+require_once __DIR__ . '/generate_nonce.php';
+
+function add_csp_header(): void
+{
+    $nonce = \generate_nonce();
+    header(
+        "Content-Security-Policy: "
+        . "default-src 'self'; "
+        . "style-src 'self' 'nonce-{$nonce}'; "
+        . "script-src 'strict-dynamic' 'nonce-{$nonce}' "
+        . "connect-src 'self' "
+        . "object-src 'none'; "
+        . "base-uri 'none'; "
+        . "form-action 'self'; "
+        . "img-src 'self' "
+        . "font-src 'self' "
+        . "worker-src 'self' "
+        . "frame-src 'self' "
+    );
+}
+add_action('send_headers', 'add_csp_header');
+?&gt;
+</code></pre>
+
+        <p>
+            Die Funktion <code>generate_nonce()</code> erzeugt einen zufälligen Nonce, der in den Richtlinien für <code>style-src</code> und <code>script-src</code> genutzt wird. So können Inline-Skripte und -Styles nur dann ausgeführt werden, wenn sie diesen Nonce enthalten.
+        </p>
+        <p>Beispiel für die Verwendung in einem HTML-Dokument:</p>
+        <pre><code>&lt;?php
+// Einbinden des CSP-Headers, bevor HTML ausgegeben wird:
+require_once 'Csp_header.php';
 ?&gt;
 &lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;de&quot;&gt;
+&lt;html lang="de"&gt;
 &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;PHP CSP Beispiel&lt;/title&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Sichere Seite mit CSP&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;h1&gt;Willkommen zu meiner sicheren Seite&lt;/h1&gt;
-    &lt;p&gt;Diese Seite nutzt einen Content-Security-Policy-Header.&lt;/p&gt;
+  &lt;h1&gt;Willkommen auf meiner sicheren Seite&lt;/h1&gt;
+  &lt;p&gt;Diese Seite nutzt einen dynamisch generierten CSP-Header mit Nonce.&lt;/p&gt;
+  &lt;!-- Beispiel für ein Inline-Skript, das den Nonce benötigt --&gt;
+  &lt;script nonce="&lt;?php echo generate_nonce(); ?&gt;"&gt;
+    console.log('Sicheres Inline-Skript wird ausgeführt.');
+  &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-        <ul>
-            <li>Wichtig ist, dass der Header vor jeglicher HTML-Ausgabe gesendet wird.</li>
-            <li>Solltest du Inline-Skripte verwenden, benötigst du Nonces oder Hashes in <code>script-src</code>.</li>
-            <li>Alternativ: Eintrag in .htaccess oder Server-Config (Apache/Nginx), z.B.:
-                <code>Header set Content-Security-Policy "default-src 'self'; ..."</code></li>
-        </ul>
     </section>
+
 </main>
 
 <footer>

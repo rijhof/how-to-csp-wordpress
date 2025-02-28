@@ -1,0 +1,66 @@
+/* Base reset */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;   /* min. 16px text size */
+    line-height: 1.5;
+    background-color: #FFFFFF;
+    color: #333333;
+}
+
+/* (Optional) sticky header, if you want it to stay at the top */
+header {
+    background-color: #2C3E50;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+
+/* Container-Box for the flowing text */
+.content-box {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #FAFAFA; /* Light gray background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Extra spacing between sections */
+section {
+    margin-bottom: 50px; /* generous spacing */
+}
+
+/* Headings, lists, etc. */
+section h2 {
+    margin-top: 0;
+    color: #2C3E50;
+}
+
+section ul, section ol {
+    margin: 10px 0 10px 40px;
+    padding: 0;
+}
+
+pre {
+    background-color: #F2F2F2;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    color: #666666;
+}
