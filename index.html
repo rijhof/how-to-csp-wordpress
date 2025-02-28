@@ -132,6 +132,45 @@
     </section>
 
     <section>
+        <h2>Core Sicherheit und typische Angriffsvektoren</h2>
+        <h3>Sicherheit des WordPress-Core</h3>
+        <ul>
+            <li>
+                Der WordPress-Core ist ein Open-Source-Projekt, das regelmäßig aktualisiert wird und von einer großen, aktiven Community überwacht wird.
+            </li>
+            <li>
+                Standardmäßig sind Best Practices implementiert – etwa Sicherheits-Nonces, rollenbasierte Zugriffskontrollen und automatisierte Updates – um potenzielle Schwachstellen zu minimieren.
+            </li>
+            <li>
+                Bekannte Sicherheitslücken im Core werden in der Regel zügig behoben, sodass der direkte Angriff auf den Kern als relativ sicher gilt.
+            </li>
+        </ul>
+        <h3>Typische Angriffsvektoren</h3>
+        <ul>
+            <li>
+                <strong>Cross-Site Scripting (XSS):</strong> Unsachgemäß gefilterte Benutzereingaben können dazu führen, dass bösartiger Code im Browser ausgeführt wird.
+            </li>
+            <li>
+                <strong>SQL Injection:</strong> Obwohl der Core hier weniger anfällig ist, stellen unsichere Plugins und Themes oft eine Angriffsfläche dar.
+            </li>
+            <li>
+                <strong>Brute-Force-Attacken:</strong> Wiederholte Versuche, durch Ausprobieren von Passwörtern Zugang zu Administratorbereichen zu erhalten.
+            </li>
+            <li>
+                <strong>Datei-Upload-Schwachstellen:</strong> Fehlerhafte Implementierungen im Dateiupload können Angreifern ermöglichen, Schadcode auf den Server zu bringen.
+            </li>
+        </ul>
+        <h3>Empfehlungen zur Absicherung</h3>
+        <ul>
+            <li>Regelmäßige Updates von WordPress, Plugins und Themes sicherstellen.</li>
+            <li>Starke Passwörter sowie Zwei-Faktor-Authentifizierung verwenden, um Brute-Force-Attacken zu verhindern.</li>
+            <li>Benutzerrechte einschränken und nur notwendige Zugriffe gewähren.</li>
+            <li>Sicherheitsplugins einsetzen und die Serverkonfiguration optimieren (z. B. durch Firewalls und Monitoring-Tools).</li>
+        </ul>
+    </section>
+
+
+    <section>
         <h2>Wie sieht ein maximal sicherer CSP-Header aus?</h2>
         <pre><code>Content-Security-Policy:
   default-src 'none';
